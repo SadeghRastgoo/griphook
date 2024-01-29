@@ -1,4 +1,4 @@
-import banks from './banks.json';
+import banksJSON from './banks.json';
 
 let cache = {};
 
@@ -14,7 +14,7 @@ const findBankByValue = (value, key) => {
     if (cache[key]) {
         return cache[key];
     } else {
-        const bank = banks.find(bank => bank[key] === value);
+        const bank = banksJSON.banks.find(bank => bank[key] === value);
         if (!bank) return {};
         cache[value] = { ...bank };
         return bank;
@@ -113,7 +113,7 @@ const findBankByPAN = (cardNumber) => {
     if (cache[iin]) {
         return cache[iin];
     } else {
-        const bank = banks.find(bank => bank.pan_iin.includes(iin));
+        const bank = banksJSON.banks.find(bank => bank.pan_iin.includes(iin));
         if (!bank) return {};
         cache[iin] = { ...bank };
         return bank;
@@ -194,7 +194,7 @@ const findBankByIBAN = (accountNumber) => {
     if (cache[nationalBankCode]) {
         return cache[nationalBankCode];
     } else {
-        const bank = banks.find(bank => bank.iban_nbc === nationalBankCode);
+        const bank = banksJSON.banks.find(bank => bank.iban_nbc === nationalBankCode);
         if (!bank) return {};
         cache[nationalBankCode] = { ...bank };
         return bank;
@@ -202,7 +202,7 @@ const findBankByIBAN = (accountNumber) => {
 };
 
 export {
-    banks,
+    banksJSON,
     findBankByName,
     findBankByFarsiName,
     validatePAN,
