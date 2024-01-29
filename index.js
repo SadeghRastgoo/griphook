@@ -1,4 +1,4 @@
-import { banks } from './banks.json';
+import banks from './banks.json';
 
 let cache = {};
 
